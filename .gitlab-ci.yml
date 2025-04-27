@@ -1,0 +1,53 @@
+image: maven:3.8.3-openjdk-17
+stages:
+  - test
+  - build
+  - deploy
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .m2/repository  # Path to Maven repository
+
+variables:
+  DOCKER_IMAGE: devops_boot_app:latest
+  DOCKER_USERNAME: $DOCKER_USERNAME  # Docker username as a GitLab CI/CD variable
+  DOCKER_PASSWORD: $DOCKER_PASSWORD  # Docker password as a GitLab CI/CD variable
+
+job1_test:
+  stage: test
+  image: maven:3.8.3-openjdk-17
+  script:
+    - echo " ... Running unit tests ... "
+    - mvn test
+  artifacts:
+    paths:
+      - target/surefire-reports
+  tags:
+    - java
+
+build:
+  stage: build
+  image: maven:3.8.3-openjdk-17
+  script:
+    - mvn clean package  # Builds the application JAR
+    - docker build -t $DOCKER_IMAGE .  # Builds the Docker image
+  artifacts:
+    paths:
+      - target/Auth_Api1-0.0.1-SNAPSHOT.jar # Saves the JAR for deployment
+  only:
+    - main
+  tags:
+    - java
+
+deploy:
+  stage: deploy
+  image: docker:latest
+  services:
+    - docker:dind  # Docker-in-Docker to execute Docker commands
+  script:
+    - echo $DOCKER_PASSWORD | docker login -u $DOCKER_USERNAME --password-stdin  # Docker login
+    - docker run -d --name Auth_Api -p 8081:8081 $DOCKER_IMAGE  # Starts the container
+  only:
+    - main
+  tags:
+    - java

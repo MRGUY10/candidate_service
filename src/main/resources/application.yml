@@ -1,0 +1,31 @@
+eureka:
+  client:
+    service-url:
+      defaultZone: http://20.11.21.61:8761/eureka/
+  instance:
+    prefer-ip-address: true
+spring:
+  application:
+    name: candidate-service
+
+
+
+
+  profiles:
+    active: dev
+
+  servlet:
+    multipart:
+      max-file-size: 50MB          # Maximum size for individual file uploads
+      max-request-size: 100MB      # Maximum request size (for multiple file uploads)
+
+  # File storage properties
+  file:
+    upload-dir: src/main/resources/static/images # Directory to save uploaded files
+
+springdoc:
+  default-produces-media-type: application/json
+
+server:
+  servlet:
+    context-path: /api/v1/
