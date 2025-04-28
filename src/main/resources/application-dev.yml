@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://candidate.mysql.database.azure.com:3306/candidateDB?useSSL=true&requireSSL=true
-    username: kamdem
-    password: 392003Jord@n
+    url: jdbc:mysql://autorack.proxy.rlwy.net:16667/railway
+    username: root
+    password: mqNGVcQUACFpsADYhommErlBivwPRQGn
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
