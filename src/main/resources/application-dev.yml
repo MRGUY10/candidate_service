@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://bkdypdloyy6geco1ozak-mysql.services.clever-cloud.com:3306/bkdypdloyy6geco1ozak
-    username: ukzfrsg1ypzr3veg
-    password: BTEyEE2BfYmbCCJqGYuO
+    url: jdbc:mysql://bb08qexnjf36cgrvry2j-mysql.services.clever-cloud.com:3306/bb08qexnjf36cgrvry2j?createDatabaseIfNotExist=true
+    username: upn5969hnxfcgqic
+    password: YYyxYbVPMDsAgUY9m8AP
     driver-class-name: com.mysql.cj.jdbc.Driver
 
 
