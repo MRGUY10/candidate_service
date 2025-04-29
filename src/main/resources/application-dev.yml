@@ -1,8 +1,8 @@
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/candidateDB?createDatabaseIfNotExist=true
+    url: jdbc:mysql://autorack.proxy.rlwy.net:16667/railway
     username: root
-    password:
+    password: mqNGVcQUACFpsADYhommErlBivwPRQGn
     driver-class-name: com.mysql.cj.jdbc.Driver
 
   jpa:
@@ -10,7 +10,6 @@ spring:
     hibernate:
       ddl-auto: update
     show-sql: true
-
 
   servlet:
     multipart:
